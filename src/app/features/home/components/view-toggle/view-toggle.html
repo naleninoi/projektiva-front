@@ -1,0 +1,27 @@
+<div class="flex items-center space-x-3">
+    <span class="text-sm text-gray-500">Вид:</span>
+    <div class="bg-white rounded-lg border border-gray-200 p-1 flex">
+        <button
+                class="px-3 py-1.5 text-sm rounded-md transition"
+                [class.bg-emerald-50]="mode() === 'grid'"
+                [class.text-emerald-700]="mode() === 'grid'"
+                [class.text-gray-600]="mode() !== 'grid'"
+                (click)="setMode('grid')"
+                aria-label="Сетка"
+        >
+            <span class="block sm:hidden">🔲</span>
+            <span class="hidden sm:block">Сетка</span>
+        </button>
+        <button
+                class="px-3 py-1.5 text-sm rounded-md transition"
+                [class.bg-emerald-50]="mode() === 'table'"
+                [class.text-emerald-700]="mode() === 'table'"
+                [class.text-gray-600]="mode() !== 'table'"
+                (click)="setMode('table')"
+                aria-label="Таблица"
+        >
+            <span class="block sm:hidden">📋</span>
+            <span class="hidden sm:block">Таблица</span>
+        </button>
+    </div>
+</div>

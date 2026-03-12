@@ -1,0 +1,77 @@
+<div class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <app-header />
+
+    <!-- Основной контент -->
+    <main class="flex-1 container mx-auto px-4 py-8">
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- Левая панель с фильтрами -->
+            <aside class="w-full md:w-80 flex-shrink-0">
+                <app-filters (filtersChange)="onFiltersChange($event)" />
+            </aside>
+
+            <!-- Основная колонка с объектами -->
+            <section class="flex-1">
+                <!-- Заголовок и переключатель режимов -->
+                <div class="flex flex-wrap items-center justify-between mb-6">
+                    <h1 class="text-2xl font-light text-gray-800">
+                        Туристические объекты
+                        <span class="text-sm font-normal text-gray-500 ml-2">
+              ({{ totalItems() }} {{ totalItems() | pluralize:'объект' }})
+            </span>
+                    </h1>
+
+                    <app-view-toggle
+                            [mode]="viewMode()"
+                            (modeChange)="onViewModeChange($event)"
+                    />
+                </div>
+
+                <!-- Индикатор загрузки -->
+                @if (loading()) {
+                    <div class="flex justify-center items-center py-12">
+                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-700"></div>
+                    </div>
+                } @else {
+                    <!-- Режим сетки -->
+                    @if (viewMode() === 'grid') {
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            @for (object of paginatedObjects; track object.id) {
+                                <app-object-card [object]="object" />
+                            } @empty {
+                                <div class="col-span-full text-center py-12 text-gray-500">
+                                    Объекты не найдены. Попробуйте изменить параметры фильтрации.
+                                </div>
+                            }
+                        </div>
+                    }
+
+                    <!-- Режим таблицы -->
+                    @if (viewMode() === 'table') {
+                        @if (paginatedObjects.length > 0) {
+                            <app-object-table [objects]="paginatedObjects" />
+                        } @else {
+                            <div class="text-center py-12 text-gray-500">
+                                Объекты не найдены. Попробуйте изменить параметры фильтрации.
+                            </div>
+                        }
+                    }
+
+                    <!-- Пагинация -->
+                    @if (totalPages > 1) {
+                        <div class="mt-8 flex justify-center">
+                            <app-pagination
+                                    [currentPage]="currentPage()"
+                                    [totalPages]="totalPages"
+                                    (pageChange)="onPageChange($event)"
+                            />
+                        </div>
+                    }
+                }
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <app-footer />
+</div>

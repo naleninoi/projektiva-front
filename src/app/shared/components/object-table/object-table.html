@@ -1,0 +1,47 @@
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden overflow-x-auto">
+    <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+        <tr>
+            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Объект</th>
+            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Тип</th>
+            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Местоположение</th>
+            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Часы работы</th>
+            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Стоимость</th>
+            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Доступность</th>
+            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Инфраструктура</th>
+            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Рейтинг</th>
+        </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            @for (object of objects(); track object.id) {
+                <tr class="hover:bg-gray-50 transition">
+                    <td class="px-4 py-3 text-sm font-medium text-gray-800">{{ object.name }}</td>
+                    <td class="px-4 py-3 text-sm text-gray-500">{{ object.typeLabel }}</td>
+                    <td class="px-4 py-3 text-sm text-gray-500">{{ object.location.region }}</td>
+                    <td class="px-4 py-3 text-sm text-gray-500">{{ object.workingHours || '—' }}</td>
+                    <td class="px-4 py-3 text-sm text-gray-800">{{ getPriceText(object) }}</td>
+                    <td class="px-4 py-3">
+                        <div class="flex space-x-1">
+                            @for (icon of getAccessibilityIcons(object); track icon) {
+                                <span class="text-lg">{{ icon }}</span>
+                            }
+                        </div>
+                    </td>
+                    <td class="px-4 py-3">
+                        <div class="flex space-x-1 text-gray-400">
+                            @for (icon of getInfrastructureIcons(object); track icon) {
+                                <span>{{ icon }}</span>
+                            }
+                        </div>
+                    </td>
+                    <td class="px-4 py-3">
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 mr-1">★</span>
+                            <span class="text-sm">{{ object.rating }}</span>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

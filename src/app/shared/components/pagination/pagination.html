@@ -1,0 +1,40 @@
+<nav class="flex items-center space-x-2" aria-label="Пагинация">
+    <!-- Кнопка "Назад" -->
+    <button
+            class="px-3 py-2 rounded-lg border border-gray-200 bg-white text-sm text-gray-500 hover:bg-gray-50 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            [disabled]="currentPage() === 1"
+            (click)="changePage(currentPage() - 1)"
+            aria-label="Предыдущая страница"
+    >
+        ←
+    </button>
+
+    <!-- Номера страниц -->
+    @for (page of pages; track page) {
+        <button
+                class="px-3 py-2 rounded-lg text-sm transition"
+                [class.bg-emerald-50]="currentPage() === page"
+                [class.border]="currentPage() === page"
+                [class.border-emerald-200]="currentPage() === page"
+                [class.text-emerald-700]="currentPage() === page"
+                [class.bg-white]="currentPage() !== page"
+                [class.border]="currentPage() !== page"
+                [class.border-gray-200]="currentPage() !== page"
+                [class.text-gray-500]="currentPage() !== page"
+                [class.hover:bg-gray-50]="currentPage() !== page"
+                (click)="changePage(page)"
+        >
+            {{ page }}
+        </button>
+    }
+
+    <!-- Кнопка "Вперед" -->
+    <button
+            class="px-3 py-2 rounded-lg border border-gray-200 bg-white text-sm text-gray-500 hover:bg-gray-50 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            [disabled]="currentPage() === totalPages()"
+            (click)="changePage(currentPage() + 1)"
+            aria-label="Следующая страница"
+    >
+        →
+    </button>
+</nav>

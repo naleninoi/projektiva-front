@@ -1,0 +1,79 @@
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sticky top-24">
+    <h2 class="text-lg font-medium text-gray-800 mb-5 flex items-center justify-between">
+        Фильтры
+        <button
+                class="text-sm text-emerald-600 hover:text-emerald-700 font-normal"
+                (click)="resetFilters()"
+        >
+            Сбросить все
+        </button>
+    </h2>
+
+    <!-- Тип объекта -->
+    <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-700 mb-3">Тип объекта</h3>
+        <div class="space-y-2">
+            <label class="flex items-center">
+                <input type="checkbox" [(ngModel)]="filters.types" value="nature" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+                <span class="ml-2 text-sm text-gray-600">🌿 Природный</span>
+            </label>
+            <label class="flex items-center">
+                <input type="checkbox" [(ngModel)]="filters.types" value="culture" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+                <span class="ml-2 text-sm text-gray-600">🏛️ Культурный</span>
+            </label>
+            <label class="flex items-center">
+                <input type="checkbox" [(ngModel)]="filters.types" value="history" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+                <span class="ml-2 text-sm text-gray-600">📜 Исторический</span>
+            </label>
+            <label class="flex items-center">
+                <input type="checkbox" [(ngModel)]="filters.types" value="museum" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+                <span class="ml-2 text-sm text-gray-600">🏛️ Музей</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Регион -->
+    <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-700 mb-3">Регион</h3>
+        <select
+                [(ngModel)]="filters.region"
+                class="w-full rounded-lg border-gray-300 text-sm focus:border-emerald-500 focus:ring-emerald-500"
+        >
+            <option value="">Любой регион</option>
+            <option value="msk">Москва и область</option>
+            <option value="spb">Санкт-Петербург</option>
+            <option value="karelia">Республика Карелия</option>
+            <option value="krasnodar">Краснодарский край</option>
+            <option value="altai">Алтай</option>
+            <option value="kamchatka">Камчатка</option>
+        </select>
+    </div>
+
+    <!-- Стоимость -->
+    <div class="mb-6">
+        <h3 class="text-sm font-medium text-gray-700 mb-3">Стоимость</h3>
+        <div class="flex items-center space-x-2">
+            <input
+                    type="number"
+                    [(ngModel)]="filters.priceFrom"
+                    placeholder="от"
+                    class="w-full rounded-lg border-gray-300 text-sm focus:border-emerald-500 focus:ring-emerald-500"
+            >
+            <span class="text-gray-400">—</span>
+            <input
+                    type="number"
+                    [(ngModel)]="filters.priceTo"
+                    placeholder="до"
+                    class="w-full rounded-lg border-gray-300 text-sm focus:border-emerald-500 focus:ring-emerald-500"
+            >
+        </div>
+    </div>
+
+    <!-- Кнопка применения -->
+    <button
+            class="w-full bg-emerald-50 text-emerald-700 py-2.5 rounded-lg hover:bg-emerald-100 transition text-sm font-medium"
+            (click)="applyFilters()"
+    >
+        Применить фильтры
+    </button>
+</div>
