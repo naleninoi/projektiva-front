@@ -1,0 +1,578 @@
+[
+  {
+    "id": "1",
+    "name": "Озеро Байкал",
+    "type": "nature",
+    "typeLabel": "🌿 Природный",
+    "location": {
+      "region": "Иркутская область",
+      "address": "озеро Байкал",
+      "coordinates": {
+        "lat": 53.5,
+        "lng": 108.0
+      }
+    },
+    "description": "Самое глубокое озеро в мире, объект Всемирного наследия ЮНЕСКО. Уникальная экосистема и эндемичные виды. Байкал содержит около 19% мировых запасов пресной воды.",
+    "shortDescription": "Самое глубокое озеро в мире",
+    "workingHours": "Круглосуточно",
+    "price": {
+      "min": 2500,
+      "isFree": false
+    },
+    "rating": 4.8,
+    "reviewsCount": 124,
+    "accessibility": {
+      "wheelchair": true,
+      "visual": true,
+      "hearing": true,
+      "guideDog": true
+    },
+    "infrastructure": {
+      "toilets": true,
+      "cafe": true,
+      "souvenirs": true,
+      "rental": true,
+      "parking": true,
+      "wifi": true
+    },
+    "images": []
+  },
+  {
+    "id": "2",
+    "name": "Московский Кремль",
+    "type": "culture",
+    "typeLabel": "🏛️ Культурный",
+    "location": {
+      "region": "Москва",
+      "address": "Московский Кремль",
+      "coordinates": {
+        "lat": 55.752,
+        "lng": 37.618
+      }
+    },
+    "description": "Древнейшая часть Москвы, главный общественно-политический и историко-художественный комплекс города. Является официальной резиденцией Президента Российской Федерации.",
+    "shortDescription": "Главный исторический комплекс Москвы",
+    "workingHours": "10:00–18:00",
+    "price": {
+      "min": 1500,
+      "isFree": false
+    },
+    "rating": 4.9,
+    "reviewsCount": 356,
+    "accessibility": {
+      "wheelchair": true,
+      "visual": true,
+      "hearing": false,
+      "guideDog": true
+    },
+    "infrastructure": {
+      "toilets": true,
+      "cafe": true,
+      "souvenirs": true,
+      "rental": false,
+      "parking": true,
+      "wifi": false
+    },
+    "images": []
+  },
+  {
+    "id": "3",
+    "name": "Эльбрус",
+    "type": "nature",
+    "typeLabel": "🏔️ Природный",
+    "location": {
+      "region": "Кабардино-Балкария",
+      "address": "гора Эльбрус",
+      "coordinates": {
+        "lat": 43.35,
+        "lng": 42.45
+      }
+    },
+    "description": "Высочайшая вершина России и Европы. Популярный центр горнолыжного спорта и альпинизма. Высота западной вершины — 5642 метра, восточной — 5621 метр.",
+    "shortDescription": "Высочайшая вершина России",
+    "workingHours": "Круглосуточно",
+    "price": {
+      "min": 4000,
+      "isFree": false
+    },
+    "rating": 4.7,
+    "reviewsCount": 89,
+    "accessibility": {
+      "wheelchair": false,
+      "visual": false,
+      "hearing": false,
+      "guideDog": false,
+      "limitedAccess": true
+    },
+    "infrastructure": {
+      "toilets": false,
+      "cafe": true,
+      "souvenirs": true,
+      "rental": true,
+      "parking": true,
+      "wifi": false
+    },
+    "images": []
+  },
+  {
+    "id": "4",
+    "name": "Государственный Эрмитаж",
+    "type": "culture",
+    "typeLabel": "🏛️ Музей",
+    "location": {
+      "region": "Санкт-Петербург",
+      "address": "Дворцовая набережная, 34",
+      "coordinates": {
+        "lat": 59.94,
+        "lng": 30.314
+      }
+    },
+    "description": "Один из крупнейших художественных музеев мира. Коллекция насчитывает более 3 миллионов произведений искусства. Главный музейный комплекс расположен в Зимнем дворце.",
+    "shortDescription": "Один из крупнейших музеев мира",
+    "workingHours": "11:00–19:00 (вт, чт, вс), 11:00–20:00 (ср, пт, сб)",
+    "price": {
+      "min": 1000,
+      "isFree": true,
+      "description": "Бесплатно каждый третий четверг месяца"
+    },
+    "rating": 4.9,
+    "reviewsCount": 412,
+    "accessibility": {
+      "wheelchair": true,
+      "visual": true,
+      "hearing": true,
+      "guideDog": true
+    },
+    "infrastructure": {
+      "toilets": true,
+      "cafe": true,
+      "souvenirs": true,
+      "rental": false,
+      "parking": false,
+      "wifi": true
+    },
+    "images": []
+  },
+  {
+    "id": "5",
+    "name": "Кижи",
+    "type": "history",
+    "typeLabel": "📜 Исторический",
+    "location": {
+      "region": "Республика Карелия",
+      "address": "остров Кижи, Онежское озеро",
+      "coordinates": {
+        "lat": 62.083,
+        "lng": 35.233
+      }
+    },
+    "description": "Музей-заповедник под открытым небом, памятник деревянного зодчества. Объект Всемирного наследия ЮНЕСКО. Главная достопримечательность — 22-главая Преображенская церковь.",
+    "shortDescription": "Шедевр деревянного зодчества",
+    "workingHours": "10:00–18:00",
+    "price": {
+      "min": 800,
+      "isFree": false
+    },
+    "rating": 4.8,
+    "reviewsCount": 167,
+    "accessibility": {
+      "wheelchair": true,
+      "visual": false,
+      "hearing": false,
+      "guideDog": false
+    },
+    "infrastructure": {
+      "toilets": true,
+      "cafe": false,
+      "souvenirs": true,
+      "rental": false,
+      "parking": false,
+      "wifi": false
+    },
+    "images": []
+  },
+  {
+    "id": "6",
+    "name": "Долина гейзеров",
+    "type": "nature",
+    "typeLabel": "🌿 Природный",
+    "location": {
+      "region": "Камчатка",
+      "address": "Кроноцкий заповедник",
+      "coordinates": {
+        "lat": 54.5,
+        "lng": 160.0
+      }
+    },
+    "description": "Одно из крупнейших гейзерных полей мира, уникальный природный объект. Входит в список Семи чудес России. Доступно только с вертолета или в рамках круизов.",
+    "shortDescription": "Уникальное гейзерное поле",
+    "workingHours": "Только в составе экскурсий",
+    "price": {
+      "min": 35000,
+      "isFree": false
+    },
+    "rating": 4.9,
+    "reviewsCount": 43,
+    "accessibility": {
+      "wheelchair": false,
+      "visual": false,
+      "hearing": false,
+      "guideDog": false,
+      "limitedAccess": true
+    },
+    "infrastructure": {
+      "toilets": false,
+      "cafe": false,
+      "souvenirs": false,
+      "rental": false,
+      "parking": false,
+      "wifi": false
+    },
+    "images": []
+  },
+  {
+    "id": "7",
+    "name": "Музей трамваев",
+    "type": "museum",
+    "typeLabel": "🏛️ Музей",
+    "location": {
+      "region": "Коломна",
+      "address": "Кремль, ул. Дмитрия Донского, 15",
+      "coordinates": {
+        "lat": 55.106505,
+        "lng": 38.757993
+      }
+    },
+    "description": "Музей отражает историю функционирования одной из старейших трамвайных систем Подмосковья. Здесь можно увидеть ретро-вагоны, архивные фотографии, технические экспонаты.",
+    "shortDescription": "Музей истории трамваев",
+    "workingHours": "Сб 11:00–19:00, Вс 11:00–17:00, будни по записи",
+    "price": {
+      "min": 300,
+      "isFree": false
+    },
+    "rating": 4.7,
+    "reviewsCount": 43,
+    "accessibility": {
+      "wheelchair": true,
+      "visual": true,
+      "hearing": false,
+      "guideDog": true,
+      "limitedAccess": true
+    },
+    "infrastructure": {
+      "toilets": false,
+      "cafe": false,
+      "souvenirs": true,
+      "rental": false,
+      "parking": false,
+      "wifi": false
+    },
+    "images": []
+  },
+  {
+    "id": "8",
+    "name": "Куршская коса",
+    "type": "nature",
+    "typeLabel": "🌿 Природный",
+    "location": {
+      "region": "Калининградская область",
+      "address": "национальный парк Куршская коса",
+      "coordinates": {
+        "lat": 55.2,
+        "lng": 20.85
+      }
+    },
+    "description": "Узкая песчаная полоса суши между Балтийским морем и Куршским заливом. Объект Всемирного наследия ЮНЕСКО. Уникальные ландшафты с дюнами и лесами.",
+    "shortDescription": "Уникальная песчаная коса",
+    "workingHours": "Круглосуточно",
+    "price": {
+      "min": 300,
+      "isFree": false
+    },
+    "rating": 4.8,
+    "reviewsCount": 156,
+    "accessibility": {
+      "wheelchair": false,
+      "visual": false,
+      "hearing": false,
+      "guideDog": true
+    },
+    "infrastructure": {
+      "toilets": true,
+      "cafe": true,
+      "souvenirs": true,
+      "rental": true,
+      "parking": true,
+      "wifi": false
+    },
+    "images": []
+  },
+  {
+    "id": "9",
+    "name": "Мамаев курган",
+    "type": "history",
+    "typeLabel": "📜 Исторический",
+    "location": {
+      "region": "Волгоград",
+      "address": "Мамаев курган",
+      "coordinates": {
+        "lat": 48.742,
+        "lng": 44.537
+      }
+    },
+    "description": "Мемориальный комплекс, посвященный героям Сталинградской битвы. Главный монумент «Родина-мать зовет!» — одна из самых высоких статуй мира.",
+    "shortDescription": "Мемориал Сталинградской битвы",
+    "workingHours": "Круглосуточно",
+    "price": {
+      "isFree": true
+    },
+    "rating": 4.9,
+    "reviewsCount": 278,
+    "accessibility": {
+      "wheelchair": true,
+      "visual": false,
+      "hearing": false,
+      "guideDog": true
+    },
+    "infrastructure": {
+      "toilets": true,
+      "cafe": true,
+      "souvenirs": true,
+      "rental": false,
+      "parking": true,
+      "wifi": false
+    },
+    "images": []
+  },
+  {
+    "id": "10",
+    "name": "Петергоф",
+    "type": "culture",
+    "typeLabel": "🏛️ Культурный",
+    "location": {
+      "region": "Санкт-Петербург",
+      "address": "г. Петергоф",
+      "coordinates": {
+        "lat": 59.88,
+        "lng": 29.91
+      }
+    },
+    "description": "Дворцово-парковый ансамбль на южном берегу Финского залива. Известен как «столица фонтанов». Включает более 150 фонтанов и 4 каскада.",
+    "shortDescription": "Столица фонтанов",
+    "workingHours": "Парк 09:00–20:00, фонтаны 11:00–18:00",
+    "price": {
+      "min": 1000,
+      "isFree": false
+    },
+    "rating": 4.8,
+    "reviewsCount": 334,
+    "accessibility": {
+      "wheelchair": true,
+      "visual": false,
+      "hearing": false,
+      "guideDog": true
+    },
+    "infrastructure": {
+      "toilets": true,
+      "cafe": true,
+      "souvenirs": true,
+      "rental": true,
+      "parking": true,
+      "wifi": true
+    },
+    "images": []
+  },
+  {
+    "id": "11",
+    "name": "Кунгурская пещера",
+    "type": "nature",
+    "typeLabel": "🌿 Природный",
+    "location": {
+      "region": "Пермский край",
+      "address": "г. Кунгур",
+      "coordinates": {
+        "lat": 57.45,
+        "lng": 57.0
+      }
+    },
+    "description": "Одна из крупнейших карстовых пещер в Европе. Протяженность около 5.7 км. Известна своими ледяными образованиями и подземными озерами.",
+    "shortDescription": "Ледяная пещера",
+    "workingHours": "10:00–17:00",
+    "price": {
+      "min": 1200,
+      "isFree": false
+    },
+    "rating": 4.7,
+    "reviewsCount": 98,
+    "accessibility": {
+      "wheelchair": false,
+      "visual": false,
+      "hearing": false,
+      "guideDog": false,
+      "limitedAccess": true
+    },
+    "infrastructure": {
+      "toilets": true,
+      "cafe": true,
+      "souvenirs": true,
+      "rental": false,
+      "parking": true,
+      "wifi": false
+    },
+    "images": []
+  },
+  {
+    "id": "12",
+    "name": "Третьяковская галерея",
+    "type": "culture",
+    "typeLabel": "🏛️ Музей",
+    "location": {
+      "region": "Москва",
+      "address": "Лаврушинский переулок, 10",
+      "coordinates": {
+        "lat": 55.741,
+        "lng": 37.62
+      }
+    },
+    "description": "Крупнейший музей русского искусства. Коллекция насчитывает более 180 тысяч произведений. Основана купцом Павлом Третьяковым в 1856 году.",
+    "shortDescription": "Главный музей русского искусства",
+    "workingHours": "10:00–18:00 (вт, ср, вс), 10:00–21:00 (чт, пт, сб)",
+    "price": {
+      "min": 800,
+      "isFree": false
+    },
+    "rating": 4.8,
+    "reviewsCount": 267,
+    "accessibility": {
+      "wheelchair": true,
+      "visual": true,
+      "hearing": true,
+      "guideDog": true
+    },
+    "infrastructure": {
+      "toilets": true,
+      "cafe": true,
+      "souvenirs": true,
+      "rental": false,
+      "parking": false,
+      "wifi": true
+    },
+    "images": []
+  },
+  {
+    "id": "13",
+    "name": "Плато Путорана",
+    "type": "nature",
+    "typeLabel": "🌿 Природный",
+    "location": {
+      "region": "Красноярский край",
+      "address": "плато Путорана",
+      "coordinates": {
+        "lat": 69.0,
+        "lng": 93.0
+      }
+    },
+    "description": "Объект Всемирного наследия ЮНЕСКО. Уникальное базальтовое плато с тысячами озер и водопадов. Одно из самых труднодоступных мест России.",
+    "shortDescription": "Край тысяч озер",
+    "workingHours": "Только в составе экспедиций",
+    "price": {
+      "min": 80000,
+      "isFree": false
+    },
+    "rating": 4.9,
+    "reviewsCount": 12,
+    "accessibility": {
+      "wheelchair": false,
+      "visual": false,
+      "hearing": false,
+      "guideDog": false,
+      "limitedAccess": true
+    },
+    "infrastructure": {
+      "toilets": false,
+      "cafe": false,
+      "souvenirs": false,
+      "rental": false,
+      "parking": false,
+      "wifi": false
+    },
+    "images": []
+  },
+  {
+    "id": "14",
+    "name": "Суздальский кремль",
+    "type": "history",
+    "typeLabel": "📜 Исторический",
+    "location": {
+      "region": "Владимирская область",
+      "address": "г. Суздаль, ул. Кремлевская, 20",
+      "coordinates": {
+        "lat": 56.42,
+        "lng": 40.44
+      }
+    },
+    "description": "Древнейшая часть Суздаля, памятник белокаменного зодчества. Включает Рождественский собор, Архиерейские палаты и древние земляные валы.",
+    "shortDescription": "Сердце Золотого кольца",
+    "workingHours": "10:00–18:00",
+    "price": {
+      "min": 600,
+      "isFree": false
+    },
+    "rating": 4.8,
+    "reviewsCount": 145,
+    "accessibility": {
+      "wheelchair": true,
+      "visual": false,
+      "hearing": false,
+      "guideDog": true
+    },
+    "infrastructure": {
+      "toilets": true,
+      "cafe": true,
+      "souvenirs": true,
+      "rental": false,
+      "parking": true,
+      "wifi": false
+    },
+    "images": []
+  },
+  {
+    "id": "15",
+    "name": "Ленские столбы",
+    "type": "nature",
+    "typeLabel": "🌿 Природный",
+    "location": {
+      "region": "Якутия",
+      "address": "национальный парк Ленские столбы",
+      "coordinates": {
+        "lat": 61.15,
+        "lng": 127.35
+      }
+    },
+    "description": "Объект Всемирного наследия ЮНЕСКО. Уникальный геологический комплекс — вертикальные скалы высотой до 200 метров вдоль берега реки Лены.",
+    "shortDescription": "Каменный лес Якутии",
+    "workingHours": "Круглосуточно",
+    "price": {
+      "min": 3000,
+      "isFree": false
+    },
+    "rating": 4.8,
+    "reviewsCount": 34,
+    "accessibility": {
+      "wheelchair": false,
+      "visual": false,
+      "hearing": false,
+      "guideDog": false,
+      "limitedAccess": true
+    },
+    "infrastructure": {
+      "toilets": true,
+      "cafe": false,
+      "souvenirs": true,
+      "rental": false,
+      "parking": true,
+      "wifi": false
+    },
+    "images": []
+  }
+]
