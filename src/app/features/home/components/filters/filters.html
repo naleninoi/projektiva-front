@@ -1,79 +1,382 @@
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sticky top-24">
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sticky top-24 max-h-[calc(100vh-120px)] overflow-y-auto">
+    <!-- Заголовок с счетчиком -->
     <h2 class="text-lg font-medium text-gray-800 mb-5 flex items-center justify-between">
-        Фильтры
-        <button
-                class="text-sm text-emerald-600 hover:text-emerald-700 font-normal"
-                (click)="resetFilters()"
-        >
-            Сбросить все
-        </button>
+        <span>Фильтры</span>
+        <div class="flex items-center space-x-2">
+            @if (getActiveFiltersCount() > 0) {
+                <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded-full">
+          {{ getActiveFiltersCount() }}
+        </span>
+            }
+            <button
+                    class="text-sm text-emerald-600 hover:text-emerald-700 font-normal"
+                    (click)="resetFilters()"
+            >
+                Сбросить все
+            </button>
+        </div>
     </h2>
 
     <!-- Тип объекта -->
-    <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-700 mb-3">Тип объекта</h3>
-        <div class="space-y-2">
-            <label class="flex items-center">
-                <input type="checkbox" [(ngModel)]="filters.types" value="nature" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
-                <span class="ml-2 text-sm text-gray-600">🌿 Природный</span>
-            </label>
-            <label class="flex items-center">
-                <input type="checkbox" [(ngModel)]="filters.types" value="culture" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
-                <span class="ml-2 text-sm text-gray-600">🏛️ Культурный</span>
-            </label>
-            <label class="flex items-center">
-                <input type="checkbox" [(ngModel)]="filters.types" value="history" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
-                <span class="ml-2 text-sm text-gray-600">📜 Исторический</span>
-            </label>
-            <label class="flex items-center">
-                <input type="checkbox" [(ngModel)]="filters.types" value="museum" class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
-                <span class="ml-2 text-sm text-gray-600">🏛️ Музей</span>
-            </label>
+    <div class="mb-4 border-b border-gray-100 pb-4">
+        <div class="flex items-center justify-between cursor-pointer" (click)="toggleSection('types')">
+            <h3 class="text-sm font-medium text-gray-700">Тип объекта</h3>
+            <span class="text-gray-400">{{ expandedSections()['types'] ? '−' : '+' }}</span>
         </div>
+
+        @if (expandedSections()['types']) {
+            <div class="mt-3 space-y-2">
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().types.includes('nature')"
+                            (change)="$event.target.checked ? filters().types.push('nature') : filters().types = filters().types.filter(t => t !== 'nature')"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">🌿 Природный</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().types.includes('culture')"
+                            (change)="$event.target.checked ? filters().types.push('culture') : filters().types = filters().types.filter(t => t !== 'culture')"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">🏛️ Культурный</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().types.includes('history')"
+                            (change)="$event.target.checked ? filters().types.push('history') : filters().types = filters().types.filter(t => t !== 'history')"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">📜 Исторический</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().types.includes('museum')"
+                            (change)="$event.target.checked ? filters().types.push('museum') : filters().types = filters().types.filter(t => t !== 'museum')"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">🏛️ Музей</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().types.includes('gastronomy')"
+                            (change)="$event.target.checked ? filters().types.push('gastronomy') : filters().types = filters().types.filter(t => t !== 'gastronomy')"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">🍽️ Гастрономический</span>
+                </label>
+            </div>
+        }
     </div>
 
     <!-- Регион -->
-    <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-700 mb-3">Регион</h3>
-        <select
-                [(ngModel)]="filters.region"
-                class="w-full rounded-lg border-gray-300 text-sm focus:border-emerald-500 focus:ring-emerald-500"
-        >
-            <option value="">Любой регион</option>
-            <option value="msk">Москва и область</option>
-            <option value="spb">Санкт-Петербург</option>
-            <option value="karelia">Республика Карелия</option>
-            <option value="krasnodar">Краснодарский край</option>
-            <option value="altai">Алтай</option>
-            <option value="kamchatka">Камчатка</option>
-        </select>
+    <div class="mb-4 border-b border-gray-100 pb-4">
+        <div class="flex items-center justify-between cursor-pointer" (click)="toggleSection('region')">
+            <h3 class="text-sm font-medium text-gray-700">Регион</h3>
+            <span class="text-gray-400">{{ expandedSections()['region'] ? '−' : '+' }}</span>
+        </div>
+
+        @if (expandedSections()['region']) {
+            <div class="mt-3">
+                <select
+                        [ngModel]="filters().region"
+                        (ngModelChange)="filters().region = $event"
+                        class="w-full rounded-lg border-gray-300 text-sm focus:border-emerald-500 focus:ring-emerald-500"
+                >
+                    <option value="">Любой регион</option>
+                    <option value="msk">Москва и область</option>
+                    <option value="spb">Санкт-Петербург</option>
+                    <option value="karelia">Республика Карелия</option>
+                    <option value="krasnodar">Краснодарский край</option>
+                    <option value="altai">Алтай</option>
+                    <option value="kamchatka">Камчатка</option>
+                    <option value="irkutsk">Иркутская область</option>
+                    <option value="kaliningrad">Калининградская область</option>
+                </select>
+            </div>
+        }
+    </div>
+
+    <!-- Доступная среда -->
+    <div class="mb-4 border-b border-gray-100 pb-4">
+        <div class="flex items-center justify-between cursor-pointer" (click)="toggleSection('accessibility')">
+            <h3 class="text-sm font-medium text-gray-700">Доступная среда</h3>
+            <span class="text-gray-400">{{ expandedSections()['accessibility'] ? '−' : '+' }}</span>
+        </div>
+
+        @if (expandedSections()['accessibility']) {
+            <div class="mt-3 space-y-2">
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().accessibility.wheelchair"
+                            (change)="filters().accessibility.wheelchair = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">♿ Для маломобильных</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().accessibility.visual"
+                            (change)="filters().accessibility.visual = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">👁️ Для слабовидящих</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().accessibility.hearing"
+                            (change)="filters().accessibility.hearing = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">👂 Для слабослышащих</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().accessibility.guideDog"
+                            (change)="filters().accessibility.guideDog = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">🐕 Собаки-поводыри</span>
+                </label>
+            </div>
+        }
+    </div>
+
+    <!-- Инфраструктура -->
+    <div class="mb-4 border-b border-gray-100 pb-4">
+        <div class="flex items-center justify-between cursor-pointer" (click)="toggleSection('infrastructure')">
+            <h3 class="text-sm font-medium text-gray-700">Инфраструктура</h3>
+            <span class="text-gray-400">{{ expandedSections()['infrastructure'] ? '−' : '+' }}</span>
+        </div>
+
+        @if (expandedSections()['infrastructure']) {
+            <div class="mt-3 space-y-2">
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().infrastructure.toilets"
+                            (change)="filters().infrastructure.toilets = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">🚻 Туалеты</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().infrastructure.cafe"
+                            (change)="filters().infrastructure.cafe = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">☕ Кафе/рестораны</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().infrastructure.souvenirs"
+                            (change)="filters().infrastructure.souvenirs = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">🛍️ Сувенирные лавки</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().infrastructure.rental"
+                            (change)="filters().infrastructure.rental = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">🚲 Прокат транспорта</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().infrastructure.parking"
+                            (change)="filters().infrastructure.parking = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">🅿️ Парковка</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().infrastructure.wifi"
+                            (change)="filters().infrastructure.wifi = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">📶 Wi-Fi</span>
+                </label>
+            </div>
+        }
+    </div>
+
+    <!-- Активный отдых -->
+    <div class="mb-4 border-b border-gray-100 pb-4">
+        <div class="flex items-center justify-between cursor-pointer" (click)="toggleSection('activities')">
+            <h3 class="text-sm font-medium text-gray-700">Активный отдых</h3>
+            <span class="text-gray-400">{{ expandedSections()['activities'] ? '−' : '+' }}</span>
+        </div>
+
+        @if (expandedSections()['activities']) {
+            <div class="mt-3 space-y-2">
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().activities.guidedTours"
+                            (change)="filters().activities.guidedTours = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">👥 Экскурсии с гидом</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().activities.hiking"
+                            (change)="filters().activities.hiking = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">🥾 Походы/трекинг</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().activities.workshops"
+                            (change)="filters().activities.workshops = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">🎨 Мастер-классы</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().activities.sports"
+                            (change)="filters().activities.sports = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">⚽ Спортивные активности</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().activities.children"
+                            (change)="filters().activities.children = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">👨‍👩‍👧 Детские программы</span>
+                </label>
+            </div>
+        }
+    </div>
+
+    <!-- Время посещения -->
+    <div class="mb-4 border-b border-gray-100 pb-4">
+        <div class="flex items-center justify-between cursor-pointer" (click)="toggleSection('season')">
+            <h3 class="text-sm font-medium text-gray-700">Время посещения</h3>
+            <span class="text-gray-400">{{ expandedSections()['season'] ? '−' : '+' }}</span>
+        </div>
+
+        @if (expandedSections()['season']) {
+            <div class="mt-3 space-y-2">
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().season.summer"
+                            (change)="filters().season.summer = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">☀️ Летом</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().season.winter"
+                            (change)="filters().season.winter = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">❄️ Зимой</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().season.yearRound"
+                            (change)="filters().season.yearRound = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">📅 Круглый год</span>
+                </label>
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().season.evening"
+                            (change)="filters().season.evening = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">🌙 Вечерние часы</span>
+                </label>
+            </div>
+        }
     </div>
 
     <!-- Стоимость -->
     <div class="mb-6">
-        <h3 class="text-sm font-medium text-gray-700 mb-3">Стоимость</h3>
-        <div class="flex items-center space-x-2">
-            <input
-                    type="number"
-                    [(ngModel)]="filters.priceFrom"
-                    placeholder="от"
-                    class="w-full rounded-lg border-gray-300 text-sm focus:border-emerald-500 focus:ring-emerald-500"
-            >
-            <span class="text-gray-400">—</span>
-            <input
-                    type="number"
-                    [(ngModel)]="filters.priceTo"
-                    placeholder="до"
-                    class="w-full rounded-lg border-gray-300 text-sm focus:border-emerald-500 focus:ring-emerald-500"
-            >
+        <div class="flex items-center justify-between cursor-pointer" (click)="toggleSection('price')">
+            <h3 class="text-sm font-medium text-gray-700">Стоимость</h3>
+            <span class="text-gray-400">{{ expandedSections()['price'] ? '−' : '+' }}</span>
         </div>
+
+        @if (expandedSections()['price']) {
+            <div class="mt-3 space-y-3">
+                <label class="flex items-center">
+                    <input
+                            type="checkbox"
+                            [checked]="filters().price.isFree"
+                            (change)="filters().price.isFree = $event.target.checked"
+                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                    >
+                    <span class="ml-2 text-sm text-gray-600">🆓 Бесплатно</span>
+                </label>
+
+                <div class="flex items-center space-x-2">
+                    <input
+                            type="number"
+                            [ngModel]="filters().price.from"
+                            (ngModelChange)="filters().price.from = $event"
+                            placeholder="от"
+                            class="w-full rounded-lg border-gray-300 text-sm focus:border-emerald-500 focus:ring-emerald-500"
+                    >
+                    <span class="text-gray-400">—</span>
+                    <input
+                            type="number"
+                            [ngModel]="filters().price.to"
+                            (ngModelChange)="filters().price.to = $event"
+                            placeholder="до"
+                            class="w-full rounded-lg border-gray-300 text-sm focus:border-emerald-500 focus:ring-emerald-500"
+                    >
+                    <span class="text-sm text-gray-500">₽</span>
+                </div>
+            </div>
+        }
     </div>
 
     <!-- Кнопка применения -->
     <button
-            class="w-full bg-emerald-50 text-emerald-700 py-2.5 rounded-lg hover:bg-emerald-100 transition text-sm font-medium"
+            class="w-full bg-emerald-50 text-emerald-700 py-3 rounded-lg hover:bg-emerald-100 transition text-sm font-medium flex items-center justify-center space-x-2"
             (click)="applyFilters()"
     >
-        Применить фильтры
+        <span>Применить фильтры</span>
+        @if (getActiveFiltersCount() > 0) {
+            <span class="bg-emerald-600 text-white text-xs px-2 py-0.5 rounded-full">
+        {{ getActiveFiltersCount() }}
+      </span>
+        }
     </button>
 </div>
