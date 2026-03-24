@@ -1,0 +1,21 @@
+:host {
+    display: block;
+}
+
+/* Анимация для кнопок */
+button {
+    transition: all 0.2s ease;
+}
+
+/* Анимация для многоточия */
+span {
+    user-select: none;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 640px) {
+    button {
+        min-width: 32px;
+        padding: 6px 10px;
+    }
+}
