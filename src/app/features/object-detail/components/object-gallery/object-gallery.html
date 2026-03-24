@@ -60,7 +60,7 @@
                             width="80"
                             height="64"
                             class="w-full h-full object-cover"
-                            (error)="$event.target.src = getPlaceholderImage($index)"
+                            (error)="onImageError($event)"
                             loading="lazy"
                     >
                 </button>
