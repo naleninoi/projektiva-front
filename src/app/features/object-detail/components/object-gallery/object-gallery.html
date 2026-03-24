@@ -1,12 +1,16 @@
 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
     <!-- Основное изображение -->
     <div class="relative bg-gray-100">
-        @if (hasImages()) {
+        @if (hasImages() && currentImage()) {
             <img
-                    [src]="currentImage()"
+                    [ngSrc]="currentImage()!"
                     [alt]="name()"
+                    width="800"
+                    height="500"
+                    priority="true"
                     class="w-full h-80 md:h-96 object-cover"
-                    (error)="$event.target.src = getPlaceholderImage(currentIndex())"
+                    (error)="onImageError($event)"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
             >
         } @else {
             <div class="w-full h-80 md:h-96 bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center">
@@ -51,10 +55,13 @@
                         (click)="setImage($index)"
                 >
                     <img
-                            [src]="image"
+                            [ngSrc]="image"
                             [alt]="name() + ' - фото ' + ($index + 1)"
+                            width="80"
+                            height="64"
                             class="w-full h-full object-cover"
                             (error)="$event.target.src = getPlaceholderImage($index)"
+                            loading="lazy"
                     >
                 </button>
             }
