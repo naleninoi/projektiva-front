@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { TouristObject } from '../../models/object.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-object-table',
     standalone: true,
+    imports: [RouterLink],
     templateUrl: './object-table.html',
     styleUrls: ['./object-table.css'],
     changeDetection: ChangeDetectionStrategy.OnPush

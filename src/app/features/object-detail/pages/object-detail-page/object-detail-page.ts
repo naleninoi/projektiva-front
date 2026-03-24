@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ObjectService } from '../../../../core/services/object.service';
 import { ObjectGallery } from '../../components/object-gallery/object-gallery';
 import { ObjectSidebar } from '../../components/object-sidebar/object-sidebar';
@@ -22,7 +22,8 @@ import { TouristObject } from '../../../../shared/models/object.model';
     ObjectSidebar,
     ObjectInfo,
     ObjectMap,
-    ObjectReviews
+    ObjectReviews,
+    RouterLink
   ],
   templateUrl: './object-detail-page.html',
   styleUrls: ['./object-detail-page.css'],

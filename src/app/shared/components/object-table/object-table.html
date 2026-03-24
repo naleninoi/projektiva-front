@@ -14,8 +14,10 @@
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
             @for (object of objects(); track object.id) {
-                <tr class="hover:bg-gray-50 transition">
-                    <td class="px-4 py-3 text-sm font-medium text-gray-800">{{ object.name }}</td>
+                <tr class="hover:bg-gray-50 transition cursor-pointer" [routerLink]="['/objects', object.id]">
+                    <td class="px-4 py-3 text-sm font-medium text-gray-800 hover:text-emerald-600 transition">
+                        {{ object.name }}
+                    </td>
                     <td class="px-4 py-3 text-sm text-gray-500">{{ object.typeLabel }}</td>
                     <td class="px-4 py-3 text-sm text-gray-500">{{ object.location.region }}</td>
                     <td class="px-4 py-3 text-sm text-gray-500">{{ object.workingHours || '—' }}</td>

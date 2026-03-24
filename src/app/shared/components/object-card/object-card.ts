@@ -1,11 +1,15 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { TouristObject } from '../../models/object.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-object-card',
     standalone: true,
     templateUrl: './object-card.html',
     styleUrls: ['./object-card.css'],
+    imports: [
+        RouterLink
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ObjectCard {
