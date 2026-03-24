@@ -1,0 +1,38 @@
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+    <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-medium text-gray-800">
+            Отзывы
+            <span class="text-sm font-normal text-gray-500 ml-2">({{ object().reviewsCount }})</span>
+        </h2>
+        <button class="text-sm text-emerald-600 hover:text-emerald-700 transition">
+            Написать отзыв →
+        </button>
+    </div>
+
+    <div class="space-y-5">
+        @for (review of reviews; track review.id) {
+            <div class="pb-4 border-b border-gray-100 last:border-0">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center space-x-2">
+                        <span class="font-medium text-gray-800">{{ review.author }}</span>
+                        <div class="flex items-center">
+                            @for (star of getStars(review.rating); track $index) {
+                                <span class="text-yellow-400 text-sm">★</span>
+                            }
+                        </div>
+                    </div>
+                    <span class="text-xs text-gray-400">{{ review.date }}</span>
+                </div>
+                <p class="text-sm text-gray-600 leading-relaxed">{{ review.text }}</p>
+            </div>
+        }
+    </div>
+
+    @if (reviews.length > 0 && object().reviewsCount > reviews.length) {
+        <div class="mt-4 text-center">
+            <button class="text-sm text-emerald-600 hover:text-emerald-700 transition">
+                Показать все {{ object().reviewsCount }} отзывов
+            </button>
+        </div>
+    }
+</div>

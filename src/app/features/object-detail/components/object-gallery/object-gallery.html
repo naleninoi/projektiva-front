@@ -1,0 +1,63 @@
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <!-- Основное изображение -->
+    <div class="relative bg-gray-100">
+        @if (hasImages()) {
+            <img
+                    [src]="currentImage()"
+                    [alt]="name()"
+                    class="w-full h-80 md:h-96 object-cover"
+                    (error)="$event.target.src = getPlaceholderImage(currentIndex())"
+            >
+        } @else {
+            <div class="w-full h-80 md:h-96 bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center">
+                <span class="text-6xl">🏛️</span>
+            </div>
+        }
+
+        <!-- Кнопки навигации (только если есть несколько изображений) -->
+        @if (hasImages() && images().length > 1) {
+            <button
+                    class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-md transition"
+                    (click)="prevImage()"
+                    aria-label="Предыдущее фото"
+            >
+                ←
+            </button>
+            <button
+                    class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-md transition"
+                    (click)="nextImage()"
+                    aria-label="Следующее фото"
+            >
+                →
+            </button>
+        }
+
+        <!-- Счетчик -->
+        @if (hasImages() && images().length > 1) {
+            <div class="absolute bottom-4 right-4 bg-black/50 text-white text-sm px-2 py-1 rounded">
+                {{ currentIndex() + 1 }} / {{ images().length }}
+            </div>
+        }
+    </div>
+
+    <!-- Миниатюры -->
+    @if (hasImages() && images().length > 1) {
+        <div class="flex gap-2 p-4 overflow-x-auto border-t border-gray-100">
+            @for (image of images(); track $index) {
+                <button
+                        class="flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden border-2 transition"
+                        [class.border-emerald-500]="currentIndex() === $index"
+                        [class.border-transparent]="currentIndex() !== $index"
+                        (click)="setImage($index)"
+                >
+                    <img
+                            [src]="image"
+                            [alt]="name() + ' - фото ' + ($index + 1)"
+                            class="w-full h-full object-cover"
+                            (error)="$event.target.src = getPlaceholderImage($index)"
+                    >
+                </button>
+            }
+        </div>
+    }
+</div>

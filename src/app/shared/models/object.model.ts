@@ -37,6 +37,26 @@ export interface TouristObject {
         parking: boolean;
         wifi: boolean;
     };
+    // Контакты
+    contacts?: {
+        phone?: string;
+        email?: string;
+        website?: string;
+        telegram?: string;
+        whatsapp?: string;
+    };
+    // Дополнительные поля из шаблона
+    historicalSignificance?: string;
+    culturalSignificance?: string;
+    bestTimeToVisit?: string;
+    activities?: string[];
+    events?: string[];
+    safetyRecommendations?: string[];
+    ecoTourism?: string;
+    localCustoms?: string;
+    cuisine?: string;
+    shopping?: string;
+    photoSpots?: string[];
     images: string[];
     mainImage?: string;
 }

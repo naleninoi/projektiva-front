@@ -7,12 +7,12 @@ export const routes: Routes = [
         component: HomePage,
         title: 'Окно в Россию | Туристические объекты'
     },
-    // {
-    //     path: 'objects/:id',
-    //     loadComponent: () => import('./features/object-detail/pages/object-detail-page/object-detail-page')
-    //         .then(m => m.ObjectDetailPage),
-    //     title: 'Окно в Россию | Детальная информация'
-    // },
+    {
+        path: 'objects/:id',
+        loadComponent: () => import('./features/object-detail/pages/object-detail-page/object-detail-page')
+            .then(m => m.ObjectDetailPage),
+        title: 'Окно в Россию | Детальная информация'
+    },
     {
         path: '**',
         redirectTo: ''

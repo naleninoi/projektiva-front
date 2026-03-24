@@ -1,0 +1,40 @@
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+    <h2 class="text-lg font-medium text-gray-800 mb-4">Расположение</h2>
+
+    <!-- Карта-заглушка (в реальном проекте используем API Яндекс.Карт) -->
+    <div class="relative h-64 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-lg mb-3 overflow-hidden">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center">
+                <span class="text-4xl mb-2 block">🗺️</span>
+                <p class="text-sm text-gray-500">{{ object().location.address }}</p>
+                <p class="text-xs text-gray-400 mt-1">
+                    {{ object().location.coordinates.lat }}, {{ object().location.coordinates.lng }}
+                </p>
+            </div>
+        </div>
+        <!-- Маркер -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div class="w-6 h-6 bg-red-500 border-2 border-white rounded-full shadow-lg"></div>
+        </div>
+    </div>
+
+    <div class="flex items-center justify-between">
+        <p class="text-sm text-gray-600">{{ object().location.address }}</p>
+        <a
+                [href]="getYandexMapsUrl()"
+                target="_blank"
+                class="text-sm text-emerald-600 hover:underline"
+        >
+            Открыть в Яндекс.Картах →
+        </a>
+    </div>
+
+    <!-- Как добраться (заглушка) -->
+    <div class="mt-4 pt-4 border-t border-gray-100">
+        <h3 class="text-sm font-medium text-gray-700 mb-2">Как добраться</h3>
+        <div class="space-y-2 text-sm text-gray-600">
+            <p>🚗 На автомобиле: по навигатору до указанного адреса</p>
+            <p>🚌 Общественным транспортом: уточняйте маршруты на месте</p>
+        </div>
+    </div>
+</div>
